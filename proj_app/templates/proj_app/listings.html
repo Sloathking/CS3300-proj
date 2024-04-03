@@ -1,0 +1,14 @@
+{% extends "proj_app/base_template.html" %}
+{% block content %}
+  <h1>Publicly Listed Groups</h1>
+  
+  <ul class="list-group">
+      {% for session in public_sessions %}
+      <li class="list-group-item">
+          <p><strong>Title:</strong> {{ session.title }}</p>
+          <p><strong>Description:</strong> {{ session.description }}</p>
+          <p><strong>Date:</strong> {{ session.dateTime }}</p>
+      </li>
+      {% endfor %}
+  </ul>
+{% endblock %}
