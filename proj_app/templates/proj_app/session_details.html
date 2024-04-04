@@ -1,0 +1,13 @@
+{% extends "proj_app/base_template.html" %}
+
+{% block content %}
+<h1>{{ session.title }}</h1>
+<ul>
+    <li><strong>Session Owner:</strong> {{session.owner}}</li>
+    <li><strong>Session Date:</strong> {{session.date}}</li>
+    <li><strong>Session Time:</strong> {{session.time}}</li>
+    <li><strong>Session Description:</strong> {{session.description}}</li>
+</ul>
+<a href="{% url 'sessionUpdate' session.id %}"><button type="button" class="btn btn-secondary">Edit</button></a>
+<a><button type="button" class="btn btn-danger">Delete</button></a>
+{% endblock %}

@@ -6,8 +6,9 @@
       {% for session in public_sessions %}
       <li class="list-group-item">
           <p><strong>Title:</strong> {{ session.title }}</p>
-          <p><strong>Description:</strong> {{ session.description }}</p>
-          <p><strong>Date:</strong> {{ session.dateTime }}</p>
+          <p><strong>Date:</strong> {{ session.date }}</p>
+          <p><strong>Time:</strong> {{ session.time }}</p>
+          <a href="{% url 'sessionDetails' session.id %}"><button type="button" class="btn btn-info">Details</button></a>
       </li>
       {% endfor %}
   </ul>

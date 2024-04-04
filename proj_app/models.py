@@ -24,7 +24,8 @@ class Session(models.Model):
     owner = models.ForeignKey(Player, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100)
     is_public = models.BooleanField(default=False)
-    dateTime = models.DateTimeField(default=timezone.localtime)
+    date = models.DateField(default=timezone.now)
+    time = models.TimeField(default=timezone.now)
     description = models.CharField(max_length=200, null=True)
 
     def __str__(self): return self.title
