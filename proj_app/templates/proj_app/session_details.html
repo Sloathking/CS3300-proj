@@ -8,6 +8,6 @@
     <li><strong>Session Time:</strong> {{session.time}}</li>
     <li><strong>Session Description:</strong> {{session.description}}</li>
 </ul>
-<a href="{% url 'sessionUpdate' session.id %}"><button type="button" class="btn btn-secondary">Edit</button></a>
-<a><button type="button" class="btn btn-danger">Delete</button></a>
+<a href="{% url 'sessionUpdate' session.id %}" type="button" class="btn btn-secondary">Edit Session</a>
+<a href="{% url 'sessionDelete' session.id %}" type="button" class="btn btn-danger">Delete Session</a>
 {% endblock %}

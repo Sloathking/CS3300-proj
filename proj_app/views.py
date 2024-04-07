@@ -27,3 +27,22 @@ def sessionUpdate(request, pk):
         form = SessionForm(instance=session)
     context = {'form': form}
     return render(request, 'proj_app/session_form.html', context)
+
+def sessionDelete(request, pk):
+    session = get_object_or_404(Session, pk=pk)
+    if request.method == 'POST':
+        session.delete()
+        return redirect('listings')
+    context = {'session': session}
+    return render(request, 'proj_app/session_delete.html', context)
+
+def sessionCreate(request):
+    if request.method == 'POST':
+        form = SessionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listings')
+    else:
+        form = SessionForm()
+    context = {'form': form}
+    return render(request, 'proj_app/session_form.html', context)

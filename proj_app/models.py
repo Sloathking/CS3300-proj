@@ -14,6 +14,7 @@ from django.utils import timezone
     def get_absolute_url(self):
         return reverse('student-detail', args=[str(self.id)])
 '''
+
 class Player(models.Model):
     username = models.CharField(max_length=100)
 
@@ -21,14 +22,14 @@ class Player(models.Model):
     def get_absolute_url(self): return reverse("player-detail", args=[str(self.id)])
 
 class Session(models.Model):
-    owner = models.ForeignKey(Player, on_delete=models.CASCADE, null=True)
+    #owner = models.ForeignKey(Player, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100)
     is_public = models.BooleanField(default=False)
+    game = models.CharField(max_length=100, default="Pong")
     date = models.DateField(default=timezone.now)
     time = models.TimeField(default=timezone.now)
     description = models.CharField(max_length=200, null=True)
 
     def __str__(self): return self.title
 
-    def get_absolute_url(self): return reverse("session-detail", args=[str(self.id)])
-    
+    def get_absolute_url(self): return reverse("sessionDetails", args=[str(self.id)])

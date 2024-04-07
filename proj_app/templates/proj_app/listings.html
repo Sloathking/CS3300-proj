@@ -1,15 +1,21 @@
 {% extends "proj_app/base_template.html" %}
+{% load static %}
 {% block content %}
-  <h1>Publicly Listed Groups</h1>
-  
-  <ul class="list-group">
-      {% for session in public_sessions %}
-      <li class="list-group-item">
-          <p><strong>Title:</strong> {{ session.title }}</p>
-          <p><strong>Date:</strong> {{ session.date }}</p>
-          <p><strong>Time:</strong> {{ session.time }}</p>
-          <a href="{% url 'sessionDetails' session.id %}"><button type="button" class="btn btn-info">Details</button></a>
-      </li>
-      {% endfor %}
-  </ul>
+  <h1>Publicly Listed Sessions</h1>
+  <a href="{% url 'sessionCreate' %}" type="button" class="btn btn-primary">Create Session</a>
+  <div class='row card-group'>
+    {% for session in public_sessions %}
+      <div class='col-md-3'>
+        <div class='card'>
+          <img class="card-img-top" src="{% static 'images/temp-card-icon.png' %}" alt="White background image with T B D written on it.">
+          <div class='card-body'>
+            <h4 class='card-title'>{{ session.title }}</h4>
+            <h5 class='card-text'>{{ session.game }}</h5>
+            <p class='card-text'>{{ session.date }}, {{ session.time }}</p>
+            <a href="{{ session.get_absolute_url }}" type="button" class="btn btn-info">Session Details</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
