@@ -5,7 +5,7 @@ from .widgets import DateInput, TimeInput
 class SessionForm(forms.ModelForm):
     class Meta:
         model = Session
-        fields = ['title', 'is_public', 'date', 'time', 'description']
+        fields = ['title', 'is_public', 'game', 'date', 'time', 'description']
         widgets = {
             'date': DateInput(),
             'time': TimeInput(),
