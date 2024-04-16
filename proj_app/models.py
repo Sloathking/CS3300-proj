@@ -1,9 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.conf import settings
 
 # Create your models here.
-''' Definied function reference
+''' Defined function reference
     #Define default String to return the name for representing the Model object.
     def __str__(self):
         return self.name
@@ -22,7 +23,7 @@ class Player(models.Model):
     def get_absolute_url(self): return reverse("player-detail", args=[str(self.id)])
 
 class Session(models.Model):
-    #owner = models.ForeignKey(Player, on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=100)
     is_public = models.BooleanField(default=False)
     game = models.CharField(max_length=100, default="Pong")

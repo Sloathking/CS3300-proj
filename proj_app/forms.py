@@ -8,5 +8,5 @@ class SessionForm(forms.ModelForm):
         fields = ['title', 'is_public', 'game', 'date', 'time', 'description']
         widgets = {
             'date': DateInput(),
-            'time': TimeInput(),
+            'time': TimeInput(format='%H:%M'),
         }

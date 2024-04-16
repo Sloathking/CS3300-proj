@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\School\2024.1 Spring\CS3300\CS3300-proj\projenv
+set VIRTUAL_ENV=C:\Users\Sloath\Documents\UCCS\2024.1 Spring\CS3300\CS3300-proj\projenv
 
 if not defined PROMPT set PROMPT=$P$G
 
