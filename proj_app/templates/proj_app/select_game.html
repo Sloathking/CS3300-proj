@@ -1,0 +1,21 @@
+{% extends "proj_app/base_template.html" %}
+
+{% block content %}
+    <h2>Select the correct game:</h2>
+    <form action="" method="POST">
+    <div class='row card-group'>
+    {% for game in results.games %}
+    {% csrf_token %}
+        <div class='col-md-3'>
+            <div class='card'>
+                <img class='card-img-top' src='{{ game.sample_cover.thumbnail_image }}' alt='{{ game.title }}'>
+                <div class='card-body'>
+                    <h4 class='card-title'>{{ game.title }}</h4>
+                    <button name="selected_game" value="{{ game }}">Select</button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</form>
+{% endblock %}

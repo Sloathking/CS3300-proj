@@ -1,12 +1,46 @@
 {% extends "proj_app/base_template.html" %}
 
 {% block content %}
-<h1>Session Form</h1>
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_div }}
-    </table>
-    <input type="submit" value="Submit">
-</form>
+<div class="container" >
+    <h1 class="text-center">Session Form</h1>
+</div>
+<div class="container-fluid">
+    {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_p }}
+                </table>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="col">
+            <form action="" method="GET">
+                <input type="text" name="game_name" placeholder="Search for a game...">
+                <input type="submit" value="Search">
+            </form>
+            <h3>Search Results</h3>
+            <form action="" method="POST">
+                <input type="submit" value="Submit">
+                <div class="list-group overflow-auto vh-100" >
+                    {% csrf_token %}
+                    {% for game in games %}
+                        <div class="list-group-item list-group-item-action col">
+                            <h4>{{ game.title }}</h4>
+                            <img src="{{ game.sample_cover.thumbnail_image }}" alt="{{ game.title }}" style="width: 100px; height: 100px;">
+                            <input type="radio" class="" name="selected_game" value="{{ game.game_id }}">
+                        </div>
+                    {% endfor %%}
+                </div>
+            </form>
+            <p>Data Provided by <a href="https://www.mobygames.com/">MobyGames</a></p>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -16,17 +16,11 @@ from django.conf import settings
         return reverse('student-detail', args=[str(self.id)])
 '''
 
-class Player(models.Model):
-    username = models.CharField(max_length=100)
-
-    def __str__(self): return self.username
-    def get_absolute_url(self): return reverse("player-detail", args=[str(self.id)])
-
 class Session(models.Model):
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=100)
-    is_public = models.BooleanField(default=False)
-    game = models.CharField(max_length=100, default="Pong")
+    game_name = models.CharField(max_length=255, null=True)
+    thumbnail = models.URLField(null=True)
     date = models.DateField(default=timezone.now)
     time = models.TimeField(default=timezone.now)
     description = models.CharField(max_length=200, null=True)

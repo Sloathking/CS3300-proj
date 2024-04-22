@@ -1,16 +1,18 @@
 {% extends "proj_app/base_template.html" %}
 {% load static %}
 {% block content %}
-  <h1>Publicly Listed Sessions</h1>
+  <h2>Posted Sessions</h2>
+  {% if user.is_authenticated %}
   <a href="{% url 'sessionCreate' %}" type="button" class="btn btn-primary">Create Session</a>
+  {% endif %}
   <div class='row card-group'>
-    {% for session in public_sessions %}
+    {% for session in sessions %}
       <div class='col-md-3'>
-        <div class='card'>
-          <img class="card-img-top" src="{% static 'images/temp-card-icon.png' %}" alt="White background image with T B D written on it.">
+        <div class='card' style="width: 200px; height: 100px;">
+          <img class="card-img-top" src="{{ session.thumbnail }}" alt="{{ session.game_name }}">
           <div class='card-body'>
             <h4 class='card-title'>{{ session.title }}</h4>
-            <h5 class='card-text'>{{ session.game }}</h5>
+            <h5 class='card-text'>{{ session.game_name }}</h5>
             <p class='card-text'>{{ session.date }}, {{ session.time }}</p>
             <a href="{{ session.get_absolute_url }}" type="button" class="btn btn-info">Session Details</a>
           </div>

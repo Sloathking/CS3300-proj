@@ -1,0 +1,10 @@
+{% extends "proj_app/base_template.html" %}
+
+{% block content %}
+<h2>Game Search Form</h2>
+<form action="{% url 'searchGame' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="game_title" placeholder="Enter game title...">
+    <button type="submit">Search</button>
+</form>
+{% endblock %}

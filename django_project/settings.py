@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'proj_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'proj_app',
     'django_bootstrap5',
 ]
 
@@ -131,3 +131,5 @@ MEDIA_URL = '/images/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+MOBY_URL = 'https://api.mobygames.com/v1/games'
+MOBY_KEY = 'moby_vj3k7Cp653PKPtOuyL1JBiQRpyb'

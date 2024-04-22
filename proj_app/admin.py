@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Player, Session
+from .models import Session
 
 # Register your models here.
-#admin.site.register(Player)
 admin.site.register(Session)

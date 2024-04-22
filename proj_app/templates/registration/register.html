@@ -1,0 +1,11 @@
+{% extends 'proj_app/base_template.html' %}
+
+{% block content %}
+  <h2>L4M User Registration Form</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="Create User" />
+  </form>
+  {{form.errors}}
+{% endblock %}
