@@ -25,7 +25,7 @@
               {% if user.is_authenticated %}
                 <form id="logout-form" method="post" action="{% url 'logout' %}">
                   {% csrf_token %}
-                  <button type="submit" class="nav-link">Logout</button>
+                  <button type="submit" class="nav-link" name="logout">Logout</button>
                 </form>
               {% else %}
                 <a class="nav-link" href="{% url 'login' %}?next={% url 'index' %}">Login</a>
